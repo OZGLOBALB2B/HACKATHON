@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OZ האקתון · איזה רעיון נבנה קודם?</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%2310024A'/%3E%3Ctext x='50' y='66' font-size='46' text-anchor='middle' fill='%2388CC39' font-family='Arial' font-weight='700'%3E5%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+.top{background:var(--n1);color:#fff;padding:36px 0 84px;position:relative;overflow:hidden}
+.top .wrap{position:relative}
+.top h1{font-size:clamp(34px,7vw,54px);line-height:1.05;margin:22px 0 14px;font-weight:700;letter-spacing:-.01em}
+.top p{margin:0;max-width:34em;color:#D9D4F5;font-size:18px}
+.rule{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.rule span{background:var(--n2);border-radius:12px;padding:8px 14px;font-size:15.5px;color:#fff}
+.rule b{font-size:20px;margin-inline-end:4px}
+.rule .r5 b{color:var(--g)}.rule .r3 b{color:var(--violet)}.rule .r1 b{color:#A8A2CC}
+.who{background:#fff;border-radius:20px;padding:22px;margin-top:-56px;position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px;box-shadow:0 1px 0 var(--line)}
+.who label{font-size:14px;font-weight:600;color:var(--mute);display:block;margin-bottom:6px}
+.who input{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--paper);font-size:17px}
+.who input:focus{border-color:var(--violet);outline:none}
+.who .note{grid-column:1/-1;font-size:14px;color:var(--mute);margin:0}
+.who.bad input:placeholder-shown{border-color:var(--coral)}
+.cat{margin:40px 0 0}
+.cat h2{font-size:23px;margin:0 0 4px;font-weight:700}
+.cat .cnt{color:var(--mute);font-size:14.5px;margin:0 0 14px}
+.idea{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:#fff;border-radius:16px;padding:16px 18px;margin-bottom:8px;border-inline-start:5px solid transparent;transition:border-color .2s,background .2s}
+.idea.s5{border-color:var(--g);background:#F6FCEC}
+.idea.s3{border-color:var(--violet);background:#F6F4FF}
+.idea h3{margin:0;font-size:18px;font-weight:700;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.idea p{margin:3px 0 0;color:var(--mute);font-size:15.5px}
+.seg{display:flex;background:var(--cream);border-radius:12px;padding:4px;gap:3px}
+.seg button{width:46px;height:42px;border:0;border-radius:9px;background:transparent;font-weight:700;font-size:18px;cursor:pointer;color:var(--mute)}
+.seg button:hover{background:#fff}
+.seg button[aria-pressed=true][data-v="5"]{background:var(--g);color:var(--n0)}
+.seg button[aria-pressed=true][data-v="3"]{background:var(--violet);color:#fff}
+.seg button[aria-pressed=true][data-v="1"]{background:#fff;color:var(--ink);box-shadow:0 0 0 1.5px var(--line)}
+.seg button.spent{opacity:.35}
+.dock{position:sticky;bottom:0;z-index:20;background:var(--n0);color:#fff;margin-top:40px;padding:14px 0 calc(14px + env(safe-area-inset-bottom))}
+.dock .wrap{display:flex;align-items:center;gap:18px}
+.bank{flex:1;display:grid;gap:7px}
+.bank .row{display:flex;align-items:center;gap:6px;font-size:14px;color:#C9C3EE}
+.bank .lab{width:92px;flex:none}
+.tok{width:22px;height:22px;border-radius:50%;border:2px solid #4A3E8F;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;transition:background .25s,border-color .25s,transform .25s}
+.t5.on{background:var(--g);border-color:var(--g);color:var(--n0)}
+.t3.on{background:var(--violet);border-color:var(--violet);color:#fff}
+.tok.pop{transform:scale(1.25)}
+.done{display:none;padding:60px 0 120px}
+.done h1{font-size:clamp(32px,6vw,46px);margin:18px 0 10px;line-height:1.1}
+.done .pick{background:#fff;border-radius:18px;padding:18px 20px;margin-top:22px}
+.done .pick h3{margin:0 0 8px;font-size:16px;color:var(--mute)}
+.done .pick ul{margin:0;padding:0 18px 0 0}
+.done .pick li{margin:3px 0;font-weight:600}
+.cfg{background:var(--coral);color:var(--n0);text-align:center;padding:10px;font-weight:600;font-size:15px}
+body.sent main,body.sent .dock,body.sent .top{display:none}
+body.sent .done{display:block}
+@media (max-width:620px){
+ .who{grid-template-columns:1fr}
+ .idea{grid-template-columns:1fr;gap:10px;padding:14px}
+ .seg{justify-self:stretch}.seg button{flex:1}
+ .bank .lab{width:auto;min-width:64px}
+ .tok{width:18px;height:18px;font-size:0}
+ .dock .wrap{gap:12px}.dock .btn{padding:13px 18px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="oz" viewBox="18.68 18.75 139.35 107.8"><g fill="#88CC39"><path d="M47.61,34.11L47.61,22.75L22.68,22.75L22.68,98.51L47.61,98.51L47.61,87.15L37.31,87.15L37.31,34.11L47.61,34.11Z"/><path d="M58.98,22.75L58.98,34.11L69.27,34.11L69.27,87.15L58.98,87.15L58.98,98.51L83.91,98.51L83.91,22.75L58.98,22.75Z"/><path d="M154.03,22.75L95.28,22.75L95.28,44.3L105.56,44.3L107.51,34.11L136.17,34.11L95.28,88.23L95.28,98.51L154.03,98.51L154.03,76.96L143.75,76.96L141.8,87.15L113.14,87.15L154.03,33.03L154.03,22.75Z"/></g><g fill="currentColor"><path d="M37.66,114.14c.48,4.95-2.38,8.39-7.06,8.39-4.43,0-7.52-3.18-7.52-7.59s3.1-7.59,7.52-7.59c2.49,0,4.61,1.12,5.77,2.68l-.86.74c-1.05-1.31-2.82-2.23-4.89-2.23-3.67,0-6.22,2.63-6.22,6.41s2.55,6.38,6.22,6.38,6.01-2.49,5.86-6.15h-5.44v-1.03h6.62Z"/><path d="M41.99,121.2h8.07v1.12h-9.38v-14.75h1.31v13.63Z"/><path d="M50.74,114.94c0-4.38,3.18-7.61,7.5-7.61s7.48,3.22,7.48,7.61-3.16,7.61-7.48,7.61-7.5-3.22-7.5-7.61ZM64.42,114.94c0-3.69-2.61-6.39-6.17-6.39s-6.2,2.7-6.2,6.39,2.61,6.38,6.2,6.38,6.17-2.7,6.17-6.38Z"/><path d="M79.83,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.06,3.16,1.62.46,2.72,1.83,2.72,3.79ZM69.95,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM75.15,121.26c2.09,0,3.44-1.29,3.44-3.18s-1.26-3.14-3.44-3.14h-5.2v6.32h5.2Z"/><path d="M88.42,107.56l6.43,14.65v.11h-1.33l-1.64-3.81h-7.9l-1.64,3.81h-1.33v-.11l6.45-14.65h.97ZM84.44,117.45h7l-3.5-8.11-3.5,8.11Z"/><path d="M98.51,121.2h8.07v1.12h-9.38v-14.75h1.31v13.63Z"/><path d="M126.88,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.07,3.16,1.62.46,2.72,1.83,2.72,3.79ZM116.99,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM122.2,121.26c2.09,0,3.43-1.29,3.43-3.18s-1.26-3.14-3.43-3.14h-5.21v6.32h5.21Z"/><path d="M128.93,112.2c.44-3.54,2.68-4.83,5.25-4.83,2.97,0,4.78,1.67,4.78,4.21,0,2.09-1.33,3.67-4.36,6.62l-3.22,2.99h7.75v1.12h-10.16v-.25l4.24-4.21c3.25-3.14,4.43-4.38,4.43-6.28,0-1.79-1.26-3.06-3.48-3.06-1.94,0-3.62,1.05-3.98,3.88l-1.24-.19Z"/><path d="M153.71,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.07,3.16,1.62.46,2.72,1.83,2.72,3.79ZM143.83,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM149.03,121.26c2.09,0,3.43-1.29,3.43-3.18s-1.26-3.14-3.43-3.14h-5.21v6.32h5.21Z"/></g></symbol></svg>
+<div class="cfg" id="cfg" hidden>חסרה כתובת ה־Web app בקובץ config.js, השליחה לא תעבוד עד שמוסיפים אותה.</div>
+
+<header class="top">
+ <div class="wrap">
+  <svg class="logo" aria-label="OZ"><use href="#oz"/></svg>
+  <h1>איזה רעיון נבנה קודם?</h1>
+  <p>22 רעיונות יצאו מההאקתון. עכשיו כל אחד ואחת מחלקים ניקוד, ולפיו נחליט מה מקבל צוות ותקציב.</p>
+  <div class="rule">
+   <span class="r5"><b>5</b>לארבעה רעיונות שהכי חשוב לבנות</span>
+   <span class="r3"><b>3</b>לשבעה רעיונות מעניינים</span>
+   <span class="r1"><b>1</b>לכל השאר, אוטומטית</span>
+  </div>
+ </div>
+</header>
+
+<main class="wrap">
+ <section class="who" id="who">
+  <div><label for="nm">שם מלא</label><input id="nm" autocomplete="name" placeholder="איך קוראים לך?"></div>
+  <div><label for="dp">מחלקה</label><input id="dp" list="depts" placeholder="בחירה או הקלדה"><datalist id="depts"></datalist></div>
+  <p class="note">אפשר לחזור ולשנות עד שהדירוג נסגר. שולחים שוב עם אותו שם והדירוג הקודם מתעדכן.</p>
+ </section>
+ <div id="list"></div>
+</main>
+
+<div class="dock">
+ <div class="wrap">
+  <div class="bank">
+   <div class="row"><span class="lab" id="l5"></span><span id="b5" style="display:flex;gap:5px"></span></div>
+   <div class="row"><span class="lab" id="l3"></span><span id="b3" style="display:flex;gap:5px"></span></div>
+  </div>
+  <button class="btn" id="send" disabled>שליחת הדירוג</button>
+ </div>
+</div>
+
+<section class="done wrap" id="done" aria-live="polite">
+ <svg class="logo" aria-label="OZ"><use href="#oz"/></svg>
+ <h1 id="dt">הדירוג נשמר. תודה!</h1>
+ <p style="color:var(--mute);margin:0" id="dsub">רוצה לשנות משהו? אפשר לערוך ולשלוח שוב עם אותו שם.</p>
+ <div class="pick"><h3>נתת 5 ל־</h3><ul id="d5"></ul></div>
+ <div class="pick"><h3>נתת 3 ל־</h3><ul id="d3"></ul></div>
+ <p style="margin-top:26px"><button class="btn line" id="edit">עריכת הדירוג</button></p>
+</section>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+const R=OZ_RULES, KEY='oz-rate-v1', $=s=>document.querySelector(s);
+const ALL=[];OZ_CATS.forEach(c=>c.items.forEach(i=>{i.cat=c.name;ALL.push(i)}));
+let st={};try{st=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+st.scores=st.scores||{};
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+if(!st.order||st.order.length!==OZ_CATS.length){st.order=shuffle(OZ_CATS.map(c=>c.id));st.inner={};OZ_CATS.forEach(c=>st.inner[c.id]=shuffle(c.items.map(i=>i.id)))}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+const API=window.OZ_API||''; if(!/^https:\/\/script\.google/.test(API))$('#cfg').hidden=false;
+
+$('#depts').innerHTML=OZ_DEPTS.map(d=>'<option value="'+d+'">').join('');
+$('#nm').value=st.name||'';$('#dp').value=st.dept||'';
+$('#nm').oninput=e=>{st.name=e.target.value;save();$('#who').classList.remove('bad')};
+$('#dp').oninput=e=>{st.dept=e.target.value;save()};
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const byId={};ALL.forEach(i=>byId[i.id]=i);
+let html='';
+st.order.forEach(cid=>{const c=OZ_CATS.find(x=>x.id===cid);if(!c)return;
+ const ids=(st.inner&&st.inner[cid])||c.items.map(i=>i.id);
+ html+='<section class="cat"><h2>'+esc(c.name)+'</h2><p class="cnt">'+(c.items.length===1?'רעיון אחד':c.items.length+' רעיונות')+'</p>';
+ ids.forEach(id=>{const i=byId[id];if(!i)return;
+  html+='<article class="idea" data-id="'+i.id+'"><div><h3>'+esc(i.title)+' <span class="ktag '+i.kind+'">'+OZ_KINDS[i.kind]+'</span></h3><p>'+esc(i.desc)+'</p></div>'+
+  '<div class="seg" role="group" aria-label="ניקוד ל'+esc(i.title)+'">'+[1,3,5].map(v=>'<button type="button" data-v="'+v+'" aria-label="'+v+' נקודות">'+v+'</button>').join('')+'</div></article>'});
+ html+='</section>'});
+$('#list').innerHTML=html;
+
+const get=id=>st.scores[id]||1;
+const count=v=>ALL.filter(i=>get(i.id)===v).length;
+$('#b5').innerHTML=Array.from({length:R.five},()=>'<i class="tok t5">5</i>').join('');
+$('#b3').innerHTML=Array.from({length:R.three},()=>'<i class="tok t3">3</i>').join('');
+let prev5=-1,prev3=-1;
+function paint(){
+ document.querySelectorAll('.idea').forEach(el=>{const v=get(el.dataset.id);
+  el.classList.toggle('s5',v===5);el.classList.toggle('s3',v===3);
+  el.querySelectorAll('button').forEach(b=>{const bv=+b.dataset.v;b.setAttribute('aria-pressed',bv===v);
+   b.classList.toggle('spent',bv!==v&&((bv===5&&c5>=R.five)||(bv===3&&c3>=R.three)))})});
+ var c5n=count(5),c3n=count(3);
+ const t5=document.querySelectorAll('.t5'),t3=document.querySelectorAll('.t3');
+ t5.forEach((t,i)=>t.classList.toggle('on',i<c5n));t3.forEach((t,i)=>t.classList.toggle('on',i<c3n));
+ if(prev5>=0&&c5n>prev5)pop(t5[c5n-1]); if(prev3>=0&&c3n>prev3)pop(t3[c3n-1]);
+ prev5=c5n;prev3=c3n;
+ $('#l5').textContent=c5n===R.five?'5 · הכל חולק':'5 · נשארו '+(R.five-c5n);
+ $('#l3').textContent=c3n===R.three?'3 · הכל חולק':'3 · נשארו '+(R.three-c3n);
+ $('#send').disabled=!(c5n===R.five&&c3n===R.three);
+}
+var c5=0,c3=0;
+function recount(){c5=count(5);c3=count(3)}
+function pop(t){if(!t)return;t.classList.add('pop');setTimeout(()=>t.classList.remove('pop'),220)}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),2600)}
+
+$('#list').addEventListener('click',e=>{const b=e.target.closest('.seg button');if(!b)return;
+ const id=b.closest('.idea').dataset.id,v=+b.dataset.v,cur=get(id);if(v===cur)return;
+ if(v===5&&c5>=R.five){toast('כל ארבעת ה־5 כבר חולקו. מורידים 5 מרעיון אחר ואז אפשר.');return}
+ if(v===3&&c3>=R.three){toast('כל שבעת ה־3 כבר חולקו. מורידים 3 מרעיון אחר ואז אפשר.');return}
+ if(v===1)delete st.scores[id];else st.scores[id]=v;save();recount();paint()});
+
+$('#send').onclick=async()=>{
+ const name=($('#nm').value||'').trim();
+ if(!name){$('#who').classList.add('bad');$('#nm').focus();$('#who').scrollIntoView({behavior:'smooth',block:'center'});toast('צריך למלא שם לפני השליחה');return}
+ const scores={};ALL.forEach(i=>scores[i.id]=get(i.id));
+ const btn=$('#send');btn.disabled=true;btn.textContent='שולח…';
+ try{
+  const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({name,dept:($('#dp').value||'').trim(),scores})});
+  const j=await r.json(); if(!j.ok)throw new Error(j.error||'');
+  st.sent=true;save();showDone(j.updated);
+ }catch(err){toast('השליחה לא עברה. בודקים חיבור ושולחים שוב.'+(err.message?' ('+err.message+')':''))}
+ finally{btn.textContent='שליחת הדירוג';paint()}
+};
+function showDone(updated){
+ $('#dt').textContent=updated?'הדירוג עודכן. תודה!':'הדירוג נשמר. תודה!';
+ $('#d5').innerHTML=ALL.filter(i=>get(i.id)===5).map(i=>'<li>'+esc(i.title)+'</li>').join('');
+ $('#d3').innerHTML=ALL.filter(i=>get(i.id)===3).map(i=>'<li>'+esc(i.title)+'</li>').join('');
+ document.body.classList.add('sent');window.scrollTo(0,0)}
+$('#edit').onclick=()=>{document.body.classList.remove('sent');window.scrollTo(0,0)};
+recount();paint();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>OZ האקתון · תוצאות הדירוג</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+<style>
+body{background:var(--n0);color:#fff}
+.gate{min-height:100vh;display:grid;place-items:center;padding:20px}
+.gate form{background:var(--n1);border-radius:22px;padding:30px;width:min(380px,100%)}
+.gate h1{font-size:28px;margin:18px 0 6px}.gate p{color:#C9C3EE;margin:0 0 18px;font-size:15.5px}
+.gate input{width:100%;border:1.5px solid var(--n3);background:var(--n0);color:#fff;border-radius:12px;padding:13px 14px;margin-bottom:12px}
+.gate .err{color:var(--coral);font-size:14.5px;min-height:1.4em;margin:0 0 8px}
+.app{display:none}.on .gate{display:none}.on .app{display:block}
+.wrap{max-width:1080px}
+.head{padding:34px 0 10px;display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap}
+.head h1{font-size:clamp(30px,5vw,44px);margin:0;line-height:1.05;flex:1;min-width:260px}
+.head .act{display:flex;gap:8px;flex-wrap:wrap}
+.head .btn{padding:11px 18px;font-size:15.5px}
+.btn.ghosty{background:var(--n2);color:#fff}.btn.ghosty:hover{background:var(--n3)}
+.meta{color:#A8A2CC;font-size:15px;margin:8px 0 26px}
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:34px}
+.pd{background:var(--n1);border-radius:20px;padding:20px;position:relative}
+.pd .rk{font-size:56px;font-weight:700;line-height:1;color:var(--g)}
+.pd:nth-child(2) .rk{color:var(--violet)}.pd:nth-child(3) .rk{color:var(--sun)}
+.pd h3{font-size:20px;margin:10px 0 4px}.pd .c{color:#A8A2CC;font-size:14px}
+.pd .pts{margin-top:12px;font-size:15px;color:#D9D4F5}.pd .pts b{font-size:22px;color:#fff}
+h2{font-size:24px;margin:34px 0 12px}
+.tbl{background:var(--paper);color:var(--ink);border-radius:18px;overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:15.5px;min-width:720px}
+th{text-align:right;font-weight:600;color:var(--mute);font-size:13.5px;padding:12px 12px;border-bottom:1.5px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th[aria-sort]{color:var(--ink)}
+td{padding:11px 12px;border-bottom:1px solid #EEF3E5;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+td.rank{font-weight:700;color:var(--mute);width:36px}
+td .t{font-weight:700}td .d{font-size:13.5px;color:var(--mute)}
+.bar{height:8px;background:#E8EEDC;border-radius:99px;width:120px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g);border-radius:99px}
+.dist{display:flex;height:10px;width:120px;border-radius:99px;overflow:hidden;background:#E8EEDC}
+.dist i:nth-child(1){background:var(--g)}.dist i:nth-child(2){background:var(--violet)}.dist i:nth-child(3){background:#CFCADF}
+.hot{font-size:12px;font-weight:700;background:#FFE3DA;color:#A33A17;border-radius:99px;padding:1px 8px;margin-inline-start:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.card{background:var(--n1);border-radius:18px;padding:18px}
+.card h4{margin:0 0 10px;font-size:15px;color:#A8A2CC;font-weight:600}
+.card .w{font-size:19px;font-weight:700}.card .s{font-size:14px;color:#C9C3EE;margin-top:4px}
+.card ol{margin:0;padding:0 20px 0 0}.card li{margin:5px 0}.card li span{color:#A8A2CC;font-size:13.5px}
+.ppl{display:flex;flex-wrap:wrap;gap:8px}
+.ppl span{background:var(--n1);border-radius:10px;padding:7px 12px;font-size:14.5px}
+.ppl small{color:#A8A2CC;margin-inline-start:6px}
+.empty{background:var(--n1);border-radius:18px;padding:40px;text-align:center;color:#C9C3EE}
+.foot{padding:40px 0 60px;color:#7C75A8;font-size:13.5px}
+.legend{display:flex;gap:14px;font-size:13px;color:#A8A2CC;margin:-4px 0 10px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-inline-end:5px;vertical-align:-1px}
+@media (max-width:700px){.podium{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="oz" viewBox="18.68 18.75 139.35 107.8"><g fill="#88CC39"><path d="M47.61,34.11L47.61,22.75L22.68,22.75L22.68,98.51L47.61,98.51L47.61,87.15L37.31,87.15L37.31,34.11L47.61,34.11Z"/><path d="M58.98,22.75L58.98,34.11L69.27,34.11L69.27,87.15L58.98,87.15L58.98,98.51L83.91,98.51L83.91,22.75L58.98,22.75Z"/><path d="M154.03,22.75L95.28,22.75L95.28,44.3L105.56,44.3L107.51,34.11L136.17,34.11L95.28,88.23L95.28,98.51L154.03,98.51L154.03,76.96L143.75,76.96L141.8,87.15L113.14,87.15L154.03,33.03L154.03,22.75Z"/></g><g fill="currentColor"><path d="M37.66,114.14c.48,4.95-2.38,8.39-7.06,8.39-4.43,0-7.52-3.18-7.52-7.59s3.1-7.59,7.52-7.59c2.49,0,4.61,1.12,5.77,2.68l-.86.74c-1.05-1.31-2.82-2.23-4.89-2.23-3.67,0-6.22,2.63-6.22,6.41s2.55,6.38,6.22,6.38,6.01-2.49,5.86-6.15h-5.44v-1.03h6.62Z"/><path d="M41.99,121.2h8.07v1.12h-9.38v-14.75h1.31v13.63Z"/><path d="M50.74,114.94c0-4.38,3.18-7.61,7.5-7.61s7.48,3.22,7.48,7.61-3.16,7.61-7.48,7.61-7.5-3.22-7.5-7.61ZM64.42,114.94c0-3.69-2.61-6.39-6.17-6.39s-6.2,2.7-6.2,6.39,2.61,6.38,6.2,6.38,6.17-2.7,6.17-6.38Z"/><path d="M79.83,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.06,3.16,1.62.46,2.72,1.83,2.72,3.79ZM69.95,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM75.15,121.26c2.09,0,3.44-1.29,3.44-3.18s-1.26-3.14-3.44-3.14h-5.2v6.32h5.2Z"/><path d="M88.42,107.56l6.43,14.65v.11h-1.33l-1.64-3.81h-7.9l-1.64,3.81h-1.33v-.11l6.45-14.65h.97ZM84.44,117.45h7l-3.5-8.11-3.5,8.11Z"/><path d="M98.51,121.2h8.07v1.12h-9.38v-14.75h1.31v13.63Z"/><path d="M126.88,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.07,3.16,1.62.46,2.72,1.83,2.72,3.79ZM116.99,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM122.2,121.26c2.09,0,3.43-1.29,3.43-3.18s-1.26-3.14-3.43-3.14h-5.21v6.32h5.21Z"/><path d="M128.93,112.2c.44-3.54,2.68-4.83,5.25-4.83,2.97,0,4.78,1.67,4.78,4.21,0,2.09-1.33,3.67-4.36,6.62l-3.22,2.99h7.75v1.12h-10.16v-.25l4.24-4.21c3.25-3.14,4.43-4.38,4.43-6.28,0-1.79-1.26-3.06-3.48-3.06-1.94,0-3.62,1.05-3.98,3.88l-1.24-.19Z"/><path d="M153.71,118.19c0,2.53-1.79,4.13-4.53,4.13h-6.62v-14.75h6.51c2.42,0,3.98,1.45,3.98,3.67,0,1.67-.84,2.74-2.07,3.16,1.62.46,2.72,1.83,2.72,3.79ZM143.83,108.62v5.33h5.1c1.83,0,2.91-1.05,2.91-2.65s-1.14-2.68-2.91-2.68h-5.1ZM149.03,121.26c2.09,0,3.43-1.29,3.43-3.18s-1.26-3.14-3.43-3.14h-5.21v6.32h5.21Z"/></g></symbol></svg>
+
+<div class="gate">
+ <form id="gf">
+  <svg class="logo" aria-label="OZ"><use href="#oz"/></svg>
+  <h1>תוצאות הדירוג</h1>
+  <p>העמוד הזה רק למארגנים.</p>
+  <input id="pw" type="password" placeholder="סיסמה" autocomplete="current-password">
+  <p class="err" id="err"></p>
+  <button class="btn" style="width:100%">כניסה</button>
+ </form>
+</div>
+
+<div class="app">
+ <div class="wrap">
+  <div class="head">
+   <h1>מה הצוות רוצה שנבנה</h1>
+   <div class="act">
+    <button class="btn ghosty" id="ref">רענון</button>
+    <a class="btn ghosty" id="sheet" target="_blank" rel="noopener" style="text-decoration:none">פתיחת הגיליון</a>
+    <button class="btn" id="csv">הורדה לאקסל</button>
+   </div>
+  </div>
+  <p class="meta" id="meta"></p>
+  <div id="body"></div>
+  <p class="foot">ניקוד: 5 לארבעת הרעיונות החשובים, 3 לשבעה מעניינים, 1 לכל השאר. "מחלוקת" מסומנת כשלפחות רבע מהמשתתפים נתנו 5 ולפחות רבע נתנו 1.</p>
+ </div>
+</div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+const $=s=>document.querySelector(s),API=window.OZ_API||'',ALL=[];
+OZ_CATS.forEach(c=>c.items.forEach(i=>{i.cat=c.name;i.cid=c.id;ALL.push(i)}));
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const demo=/[?&]demo=1/.test(location.search);
+let key=sessionStorage.getItem('oz-rk')||'',data=null,sortBy='total',sortDir=-1;
+
+async function load(){
+ if(demo){data={responses:fake(),sheetUrl:'#'};return}
+ const r=await fetch(API+'?key='+encodeURIComponent(key)); const j=await r.json();
+ if(!j.ok)throw new Error(j.error||'שגיאה'); data=j;
+}
+function fake(){const D=OZ_DEPTS,out=[];for(let n=0;n<26;n++){const ids=ALL.map(i=>i.id).sort(()=>Math.random()-.5),s={};ids.forEach((id,i)=>s[id]=i<4?5:i<11?3:1);out.push({name:'משתתף '+(n+1),dept:D[n%D.length],t:new Date(Date.now()-n*36e5).toISOString(),scores:s})}return out}
+
+function stats(rs){
+ return ALL.map(i=>{const v=rs.map(r=>+r.scores[i.id]||1),n=v.length||1,tot=v.reduce((a,b)=>a+b,0),avg=tot/n;
+  const n5=v.filter(x=>x===5).length,n3=v.filter(x=>x===3).length,n1=v.filter(x=>x===1).length;
+  const sd=Math.sqrt(v.reduce((a,x)=>a+(x-avg)**2,0)/n);
+  return Object.assign({},i,{total:tot,avg,n5,n3,n1,sd,hot:v.length>=4&&n5/n>=.25&&n1/n>=.25})});
+}
+function render(){
+ const rs=data.responses||[];$('#sheet').href=data.sheetUrl||'#';
+ const last=rs.reduce((m,r)=>r.t>m?r.t:m,'');
+ $('#meta').textContent=rs.length?(rs.length+' משתתפים דירגו'+(last?' · עדכון אחרון '+new Date(last).toLocaleString('he-IL',{day:'numeric',month:'numeric',hour:'2-digit',minute:'2-digit'}):'')+(demo?' · נתוני דמו':'')):'';
+ if(!rs.length){$('#body').innerHTML='<div class="empty">עוד אין דירוגים. שולחים את הקישור לצוות והתוצאות יופיעו כאן.</div>';return}
+ const S=stats(rs),rank=S.slice().sort((a,b)=>b.total-a.total||b.n5-a.n5),max=rank[0].total||1,N=rs.length;
+ const pos={};rank.forEach((x,i)=>pos[x.id]=i+1);
+ let h='<div class="podium">'+rank.slice(0,3).map((x,i)=>'<div class="pd"><div class="rk">'+(i+1)+'</div><h3>'+esc(x.title)+'</h3><div class="c">'+esc(x.cat)+' <span class="ktag '+x.kind+'">'+OZ_KINDS[x.kind]+'</span></div><div class="pts"><b>'+x.total+'</b> נקודות · '+x.n5+' נתנו 5</div></div>').join('')+'</div>';
+ const cols=[['rank','#'],['title','רעיון'],['total','נקודות'],['avg','ממוצע'],['n5','נתנו 5'],['dist','התפלגות'],['sd','פיזור']];
+ const rows=S.slice().sort((a,b)=>{const k=sortBy==='rank'?'total':sortBy;const x=a[k],y=b[k];return (typeof x==='string'?x.localeCompare(y,'he'):(x-y))*sortDir||(pos[a.id]-pos[b.id])});
+ h+='<h2>כל הרעיונות</h2><div class="legend"><span><i style="background:var(--g)"></i>5</span><span><i style="background:var(--violet)"></i>3</span><span><i style="background:#CFCADF"></i>1</span></div><div class="tbl"><table><thead><tr>'+
+  cols.map(c=>'<th data-k="'+c[0]+'"'+(sortBy===c[0]?' aria-sort="'+(sortDir<0?'descending':'ascending')+'"':'')+'>'+c[1]+(sortBy===c[0]?(sortDir<0?' ↓':' ↑'):'')+'</th>').join('')+'</tr></thead><tbody>'+
+  rows.map(x=>'<tr><td class="rank">'+pos[x.id]+'</td><td><div class="t">'+esc(x.title)+' <span class="ktag '+x.kind+'">'+OZ_KINDS[x.kind]+'</span>'+(x.hot?'<span class="hot">מחלוקת</span>':'')+'</div><div class="d">'+esc(x.cat)+'</div></td>'+
+   '<td class="n"><div style="display:flex;align-items:center;gap:10px"><b style="min-width:30px">'+x.total+'</b><div class="bar"><i style="width:'+(x.total/max*100)+'%"></i></div></div></td>'+
+   '<td class="n">'+x.avg.toFixed(2)+'</td><td class="n">'+x.n5+' מתוך '+N+'</td>'+
+   '<td><div class="dist"><i style="width:'+(x.n5/N*100)+'%"></i><i style="width:'+(x.n3/N*100)+'%"></i><i style="width:'+(x.n1/N*100)+'%"></i></div></td>'+
+   '<td class="n">'+x.sd.toFixed(2)+'</td></tr>').join('')+'</tbody></table></div>';
+ h+='<h2>המוביל בכל קטגוריה</h2><div class="grid">'+OZ_CATS.map(c=>{const w=rank.find(x=>x.cid===c.id);return '<div class="card"><h4>'+esc(c.name)+'</h4><div class="w">'+esc(w.title)+'</div><div class="s">'+w.total+' נקודות · מקום '+pos[w.id]+' בסך הכל</div></div>'}).join('')+'</div>';
+ const depts={};rs.forEach(r=>{const d=(r.dept||'').trim()||'בלי מחלקה';(depts[d]=depts[d]||[]).push(r)});
+ h+='<h2>לפי מחלקה</h2><div class="grid">'+Object.keys(depts).sort((a,b)=>depts[b].length-depts[a].length).map(d=>{const t=stats(depts[d]).sort((a,b)=>b.total-a.total).slice(0,3);
+  return '<div class="card"><h4>'+esc(d)+' · '+depts[d].length+(depts[d].length===1?' משתתף':' משתתפים')+'</h4><ol>'+t.map(x=>'<li>'+esc(x.title)+' <span>'+x.avg.toFixed(1)+'</span></li>').join('')+'</ol></div>'}).join('')+'</div>';
+ h+='<h2>מי דירג</h2><div class="ppl">'+rs.slice().sort((a,b)=>a.name.localeCompare(b.name,'he')).map(r=>'<span>'+esc(r.name)+(r.dept?'<small>'+esc(r.dept)+'</small>':'')+'</span>').join('')+'</div>';
+ $('#body').innerHTML=h;
+ document.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=th.dataset.k==='dist'?'n5':th.dataset.k;if(sortBy===k)sortDir*=-1;else{sortBy=k;sortDir=(k==='title')?1:-1}render()});
+}
+function csv(){
+ const rs=data.responses||[],S=stats(rs).sort((a,b)=>b.total-a.total),q=s=>'"'+String(s).replace(/"/g,'""')+'"';
+ let out='דירוג כללי\n'+['מקום','רעיון','קטגוריה','סוג','נקודות','ממוצע','נתנו 5','נתנו 3','נתנו 1','פיזור'].map(q).join(',')+'\n';
+ S.forEach((x,i)=>out+=[i+1,x.title,x.cat,OZ_KINDS[x.kind],x.total,x.avg.toFixed(2),x.n5,x.n3,x.n1,x.sd.toFixed(2)].map(q).join(',')+'\n');
+ out+='\nתשובות גולמיות\n'+['שם','מחלקה','זמן'].concat(ALL.map(i=>i.title)).map(q).join(',')+'\n';
+ rs.forEach(r=>out+=[r.name,r.dept,r.t].concat(ALL.map(i=>r.scores[i.id])).map(q).join(',')+'\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+out],{type:'text/csv;charset=utf-8'}));a.download='oz-hackathon-ratings.csv';a.click();
+}
+async function enter(){
+ try{await load();sessionStorage.setItem('oz-rk',key);document.body.classList.add('on');render()}
+ catch(e){$('#err').textContent=/סיסמה/.test(e.message)?'הסיסמה לא נכונה.':'לא הצלחתי לטעון. בודקים את הכתובת ב־config.js.';sessionStorage.removeItem('oz-rk')}
+}
+$('#gf').onsubmit=e=>{e.preventDefault();key=$('#pw').value;enter()};
+$('#ref').onclick=async()=>{$('#ref').textContent='טוען…';try{await load();render()}catch(e){}$('#ref').textContent='רענון'};
+$('#csv').onclick=csv;
+if(demo||key)enter();
+})();
+</script>
+</body>
+</html>
